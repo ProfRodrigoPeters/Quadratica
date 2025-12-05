@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação: Função Quadrática</title>
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- CSS separado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="flex flex-col items-center min-h-screen p-4">
+
+    <div class="max-w-4xl w-full">
+        <header class="mb-6 text-center">
+            <h1 class="text-3xl font-bold text-blue-400 mb-2">Simulador de Função Quadrática</h1>
+            <p class="text-slate-400">Prévia interativa da aula de Manim</p>
+            <div class="text-2xl mt-4 font-mono bg-slate-800 p-3 rounded-lg inline-block border border-slate-700">
+                \( f(x) = \)
+                <span id="val-a" class="text-yellow-400 font-bold">1</span>\(x^2 + \)
+                <span id="val-b" class="text-green-400 font-bold">0</span>\(x + \)
+                <span id="val-c" class="text-red-400 font-bold">0</span>
+            </div>
+        </header>
+
+        <div class="flex flex-col md:flex-row gap-6">
+            
+            <!-- Canvas -->
+            <div class="flex-1 relative">
+                <canvas id="graphCanvas" width="600" height="400" class="w-full h-auto border border-slate-700"></canvas>
+                <div class="absolute top-2 right-2 text-xs text-slate-500">Clique e arraste para ver coordenadas</div>
+            </div>
+
+            <!-- Controles -->
+            <div class="w-full md:w-64 bg-slate-800 p-5 rounded-lg border border-slate-700 h-fit">
+                <h3 class="text-lg font-semibold mb-4 border-b border-slate-600 pb-2">Controles</h3>
+
+                <div class="mb-6">
+                    <label class="flex justify-between text-sm mb-1">
+                        <span class="text-yellow-400 font-bold">Coeficiente 'a'</span>
+                        <span id="display-a">1.0</span>
+                    </label>
+                    <input type="range" id="slider-a" min="-5" max="5" step="0.1" value="1" class="w-full">
+                    <p class="text-xs text-slate-400 mt-1" id="desc-a">Concavidade para cima</p>
+                </div>
+
+                <div class="mb-6">
+                    <label class="flex justify-between text-sm mb-1">
+                        <span class="text-green-400 font-bold">Coeficiente 'b'</span>
+                        <span id="display-b">0.0</span>
+                    </label>
+                    <input type="range" id="slider-b" min="-5" max="5" step="0.1" value="0" class="w-full">
+                    <p class="text-xs text-slate-400 mt-1">Inclinação no eixo Y</p>
+                </div>
+
+                <div class="mb-6">
+                    <label class="flex justify-between text-sm mb-1">
+                        <span class="text-red-400 font-bold">Coeficiente 'c'</span>
+                        <span id="display-c">0.0</span>
+                    </label>
+                    <input type="range" id="slider-c" min="-5" max="5" step="0.1" value="0" class="w-full">
+                    <p class="text-xs text-slate-400 mt-1">Intercepto Y (Altura)</p>
+                </div>
+
+                <button onclick="resetValues()" class="w-full py-2 bg-slate-700 hover:bg-slate-600 rounded transition text-sm">
+                    Resetar Valores
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript separado -->
+    <script src="script.js"></script>
+</body>
+</html>
+
